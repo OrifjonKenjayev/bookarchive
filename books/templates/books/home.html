@@ -1,63 +1,73 @@
 {% extends "books/base.html" %}
 {% block title %}Home{% endblock %}
+
 {% block content %}
 
-<!-- HERO -->
-<div class="mb-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-10 text-white shadow">
-  <h1 class="text-3xl md:text-4xl font-extrabold mb-2">
-    Discover & Download Books
-  </h1>
-  <p class="text-lg opacity-90">
-    Explore thousands of books by category
-  </p>
+<!-- HERO SECTION -->
+<div class="mb-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-10 text-white shadow-lg relative overflow-hidden">
+    <!-- Optional logo in hero -->
+    <img src="/media/site/logo.png" alt="Logo" class="absolute top-4 left-6 h-12 hidden md:block">
+
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Your Digital Library,<br class="hidden md:block"> Anytime, Anywhere
+    </h1>
+    <p class="text-lg md:text-xl opacity-90 max-w-2xl">
+        Explore thousands of books by category and download instantly to your device.
+    </p>
+</div>
+
+<!-- FEATURE IMAGE BELOW HERO -->
+<div class="mb-14 rounded-2xl overflow-hidden shadow-lg">
+    <img src="/media/site/feature.jpg"
+         alt="Library Feature"
+         class="w-full h-[420px] object-cover transition-transform duration-500 hover:scale-105">
 </div>
 
 <!-- CATEGORIES -->
-<h2 class="text-2xl font-bold mb-6">Categories</h2>
-
+<h2 class="text-3xl font-bold mb-6 dark:text-gray-100">Categories</h2>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
-  {% for category in categories %}
-    <a href="{% url 'books:subcategory_list' category.slug %}"
-       class="group bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+    {% for category in categories %}
+        <a href="{% url 'books:subcategory_list' category.slug %}"
+           class="group bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
 
-      {% if category.cover %}
-        <img src="{{ category.cover.url }}"
-             class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300">
-      {% else %}
-        <div class="w-full h-36 bg-gray-200 flex items-center justify-center">
-          <i class="fa fa-folder-open text-4xl text-gray-400"></i>
-        </div>
-      {% endif %}
+            {% if category.cover %}
+                <img src="{{ category.cover.url }}"
+                     alt="{{ category.name }}"
+                     class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300">
+            {% else %}
+                <div class="w-full h-36 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                    <i class="fa fa-folder-open text-4xl text-gray-400 dark:text-gray-300"></i>
+                </div>
+            {% endif %}
 
-      <div class="p-4 text-center font-semibold">
-        {{ category.name }}
-      </div>
-    </a>
-  {% endfor %}
+            <div class="p-4 text-center font-semibold dark:text-gray-100">
+                {{ category.name }}
+            </div>
+        </a>
+    {% endfor %}
 </div>
 
 <!-- RECENT BOOKS -->
-<h2 class="text-2xl font-bold mb-6">Recent Books</h2>
-
+<h2 class="text-3xl font-bold mb-6 dark:text-gray-100">Recent Books</h2>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-  {% for book in recent_books %}
-    <a href="{% url 'books:book_detail' book.id %}"
-       class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+    {% for book in recent_books %}
+        <a href="{% url 'books:book_detail' book.id %}"
+           class="bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
 
-      {% if book.cover %}
-        <img src="{{ book.cover.url }}" class="w-full h-48 object-cover">
-      {% else %}
-        <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-          <i class="fa fa-book text-4xl text-gray-400"></i>
-        </div>
-      {% endif %}
+            {% if book.cover %}
+                <img src="{{ book.cover.url }}" class="w-full h-48 object-cover">
+            {% else %}
+                <div class="w-full h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                    <i class="fa fa-book text-4xl text-gray-400 dark:text-gray-300"></i>
+                </div>
+            {% endif %}
 
-      <div class="p-4">
-        <h3 class="font-bold line-clamp-2">{{ book.title }}</h3>
-        <p class="text-sm text-gray-600">{{ book.author }}</p>
-      </div>
-    </a>
-  {% endfor %}
+            <div class="p-4">
+                <h3 class="font-bold line-clamp-2 dark:text-gray-100">{{ book.title }}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-300">{{ book.author }}</p>
+            </div>
+        </a>
+    {% endfor %}
 </div>
 
 {% endblock %}
