@@ -1,18 +1,29 @@
 {% extends "books/base.html" %}
+{% block title %}{{ category.name }}{% endblock %}
+
 {% block content %}
-<h1 class="text-2xl font-bold mb-3">{{ category.name }}</h1>
+<h1 class="text-3xl font-bold mb-2">{{ category.name }}</h1>
+<p class="text-gray-600 mb-8">Choose a subcategory</p>
 
-<p class="mb-3">Subcategories:</p>
-
-<ul class="list-disc ml-6">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
   {% for sc in subcategories %}
-    <li>
-      <a class="text-blue-600" 
-         href="{% url 'books:book_list' category.slug sc.slug %}">
-        {{ sc.name }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+    <a href="{% url 'books:book_list' category.slug sc.slug %}"
+       class="group bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
 
+      {% if sc.cover %}
+        <img src="{{ sc.cover.url }}"
+             alt="{{ sc.name }}"
+             class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-300">
+      {% else %}
+        <div class="w-full h-36 bg-gray-200 flex items-center justify-center">
+          <i class="fa fa-layer-group text-3xl text-gray-400"></i>
+        </div>
+      {% endif %}
+
+      <div class="p-4 text-center font-semibold">
+        {{ sc.name }}
+      </div>
+    </a>
+  {% endfor %}
+</div>
 {% endblock %}

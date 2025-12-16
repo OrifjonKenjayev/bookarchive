@@ -33,14 +33,7 @@ def subcategory_list(request, category_slug):
     return render(request, 'books/subcategory_list.html', {'category': category, 'subcategories': subcategories})
 
 
-# def book_list(request, category_slug, subcategory_slug=None):
-#     category = get_object_or_404(Category, slug=category_slug)
-#     if subcategory_slug:
-#         subcategory = get_object_or_404(SubCategory, slug=subcategory_slug, category=category)
-#         books = subcategory.books.all()
-#     else:
-#         books = category.books.all()
-#     return render(request, 'books/book_list.html', {'category': category, 'books': books})
+
 def book_list(request, category_slug, subcategory_slug=None):
     category = get_object_or_404(Category, slug=category_slug)
     if subcategory_slug:
@@ -101,24 +94,7 @@ def upload_book(request):
     return render(request, 'books/upload.html', {'form': form})
 
 
-# # New: site-wide search view
-# def search(request):
-#     q = request.GET.get('q', '').strip()
-#     results = Book.objects.none()
-#     if q:
-#         results = Book.objects.filter(
-#             Q(title__icontains=q) |
-#             Q(author__icontains=q) |
-#             Q(description__icontains=q) |
-#             Q(category__name__icontains=q) |
-#             Q(subcategory__name__icontains=q)
-#         ).order_by('-uploaded_at')
 
-#     page_obj = paginate_queryset(request, results, per_page=12)
-#     return render(request, 'books/search_results.html', {
-#         'q': q,
-#         'books': page_obj
-#     })
 
 def search_results(request):
     query = request.GET.get('q', '')

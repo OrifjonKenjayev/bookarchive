@@ -5,40 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}KitobArxiv{% endblock %}</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
+
 <body class="bg-gray-100 text-gray-900">
 
-    <header class="bg-white shadow p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo / Home Link -->
-            <a href="{% url 'books:home' %}" class="font-bold text-xl">KitobArxiv</a>
+<header class="bg-white shadow sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
 
-            <!-- Navigation + Search -->
-            <div class="flex items-center space-x-4">
-                <!-- Categories Link -->
-                <a href="{% url 'books:category_list' %}" class="text-gray-700 hover:text-blue-600">
-                    Kategoriyalar
-                </a>
+        <!-- Logo -->
+        <a href="{% url 'books:home' %}" class="text-2xl font-extrabold tracking-tight">
+            📚 KitobArxiv
+        </a>
 
-                <!-- Search Form -->
-                <form action="{% url 'books:search_results' %}" method="get" class="flex">
-                    <input type="text" name="q" placeholder="Search books..."
-                           class="px-2 py-1 border rounded-l">
-                    <button type="submit" class="px-3 py-1 bg-blue-600 text-white rounded-r">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-            </div>
+        <!-- Nav -->
+        <div class="flex items-center gap-6">
+
+            <a href="{% url 'books:category_list' %}"
+               class="font-medium text-gray-700 hover:text-blue-600 transition">
+                Kategoriyalar
+            </a>
+
+            <!-- Search -->
+            <form action="{% url 'books:search_results' %}" method="get"
+                  class="hidden md:flex items-center bg-gray-100 rounded-lg overflow-hidden">
+                <input type="text" name="q" placeholder="Search books..."
+                       class="bg-transparent px-4 py-2 w-64 focus:outline-none">
+                <button class="px-4 text-gray-600 hover:text-blue-600">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+
         </div>
-    </header>
+    </div>
+</header>
 
-    <main class="container mx-auto p-6">
-        {% block content %}{% endblock %}
-    </main>
+<main class="container mx-auto px-6 py-8">
+    {% block content %}{% endblock %}
+</main>
+
 </body>
 </html>
