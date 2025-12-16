@@ -1,5 +1,5 @@
 {% extends "books/base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Asosiy sahifa{% endblock %}
 
 {% block content %}
 
@@ -9,10 +9,10 @@
     <img src="/media/site/logo.png" alt="Logo" class="absolute top-4 left-6 h-12 hidden md:block">
 
     <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
-        Your Digital Library,<br class="hidden md:block"> Anytime, Anywhere
+        Elektron kutubxona,<br class="hidden md:block"> Doimo siz bilan
     </h1>
     <p class="text-lg md:text-xl opacity-90 max-w-2xl">
-        Explore thousands of books by category and download instantly to your device.
+        Kitoblarni yuklab oling va o'qing.
     </p>
 </div>
 
@@ -24,7 +24,7 @@
 </div>
 
 <!-- CATEGORIES -->
-<h2 class="text-3xl font-bold mb-6 dark:text-gray-100">Categories</h2>
+<h2 class="text-3xl font-bold mb-6 dark:text-gray-100">Turkumlar</h2>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
     {% for category in categories %}
         <a href="{% url 'books:subcategory_list' category.slug %}"
@@ -48,7 +48,7 @@
 </div>
 
 <!-- RECENT BOOKS -->
-<h2 class="text-3xl font-bold mb-6 dark:text-gray-100">Recent Books</h2>
+<h2 class="text-3xl font-bold mb-6 dark:text-gray-100">So'nggi qo'shilgan kitoblar</h2>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
     {% for book in recent_books %}
         <a href="{% url 'books:book_detail' book.id %}"

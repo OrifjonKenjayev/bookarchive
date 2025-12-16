@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}KitobArxiv{% endblock %}</title>
+    <title>{% block title %}eKutubxona{% endblock %}</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +48,7 @@
         <a href="{% url 'books:home' %}" class="flex items-center gap-2">
             <!-- Example: Replace with your actual logo -->
             <img src="/media/site/logo.png" alt="KitobArxiv Logo" class="h-10 w-auto">
-            <span class="text-xl font-extrabold dark:text-white">KitobArxiv</span>
+            <span class="text-xl font-extrabold dark:text-white">eKutubxona</span>
         </a>
 
         <!-- Nav -->
@@ -56,18 +56,18 @@
 
             <a href="{% url 'books:category_list' %}"
                class="font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition">
-                Kategoriyalar
+                Turkumlar
             </a>
 
             <a href="{% url 'books:contact' %}"
                class="font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition">
-                Contact
+                Bog'lanish
             </a>
 
             <!-- Search -->
             <form action="{% url 'books:search_results' %}" method="get"
                   class="hidden md:flex items-center bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
-                <input type="text" name="q" placeholder="Search books..."
+                <input type="text" name="q" placeholder="Kitoblarni qidiring..."
                        class="bg-transparent dark:text-white px-4 py-2 w-64 focus:outline-none">
                 <button class="px-4 text-gray-600 dark:text-gray-200 hover:text-blue-600 transition">
                     <i class="fa fa-search"></i>
