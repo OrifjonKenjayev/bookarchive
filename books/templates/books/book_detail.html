@@ -1,0 +1,25 @@
+{% extends "books/base.html" %}
+{% block content %}
+
+<div class="bg-white p-6 rounded shadow">
+  <h1 class="text-xl font-bold">{{ book.title }}</h1>
+  <p class="text-sm mb-4">By {{ book.author }}</p>
+
+  <p>{{ book.description }}</p>
+
+  <div class="mt-6">
+    <a href="{% url 'books:book_download' book.id %}" 
+       class="px-4 py-2 bg-blue-600 text-white rounded">
+       Download
+    </a>
+
+    {# Check if last 4 characters are ".pdf" #}
+    {% if book.file.url|lower|slice:"-4:" == ".pdf" %}
+      <a href="{{ book.file.url }}" target="_blank" class="ml-3 text-blue-600">
+        View PDF
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

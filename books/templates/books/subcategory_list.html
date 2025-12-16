@@ -1,0 +1,18 @@
+{% extends "books/base.html" %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-3">{{ category.name }}</h1>
+
+<p class="mb-3">Subcategories:</p>
+
+<ul class="list-disc ml-6">
+  {% for sc in subcategories %}
+    <li>
+      <a class="text-blue-600" 
+         href="{% url 'books:book_list' category.slug sc.slug %}">
+        {{ sc.name }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
