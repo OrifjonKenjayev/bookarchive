@@ -3,38 +3,54 @@
 
 {% block content %}
 
-<div class="bg-white p-6 rounded shadow">
+<div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
   <div class="flex flex-col md:flex-row gap-6">
+
     <!-- Book Cover -->
     {% if book.cover %}
-      <img src="{{ book.cover.url }}" alt="{{ book.title }} Cover" class="w-full md:w-48 h-auto object-cover rounded shadow">
+      <img src="{{ book.cover.url }}"
+           alt="{{ book.title }} Cover"
+           class="w-full md:w-48 h-auto object-cover rounded shadow">
     {% else %}
-      <div class="w-full md:w-48 h-64 bg-gray-200 flex items-center justify-center rounded shadow">
-        <i class="fa fa-book text-6xl text-gray-500"></i>  <!-- Placeholder -->
+      <div
+        class="w-full md:w-48 h-64
+               bg-gray-200 dark:bg-gray-700
+               flex items-center justify-center
+               rounded shadow">
+        <i class="fa fa-book text-6xl text-gray-500 dark:text-gray-300"></i>
       </div>
     {% endif %}
 
     <!-- Book Info -->
     <div class="flex-1">
-      <h1 class="text-xl font-bold">{{ book.title }}</h1>
-      <p class="text-sm mb-4">By {{ book.author }}</p>
+      <h1 class="text-xl font-bold dark:text-gray-100">
+        {{ book.title }}
+      </h1>
+      <p class="text-sm mb-4 text-gray-600 dark:text-gray-300">
+        Muallif: {{ book.author }}
+      </p>
 
-      <p>{{ book.description }}</p>
+      <p class="text-gray-700 dark:text-gray-200">
+        {{ book.description }}
+      </p>
 
       <div class="mt-6 flex items-center gap-3">
-        <a href="{% url 'books:book_download' book.id %}" 
-           class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
-           Download
+        <a href="{% url 'books:book_download' book.id %}"
+           class="px-4 py-2 bg-blue-600 text-white rounded
+                  hover:bg-blue-700 transition-colors">
+          Yuklab olish
         </a>
 
-        {# Check if last 4 characters are ".pdf" #}
         {% if book.file.url|lower|slice:"-4:" == ".pdf" %}
-          <a href="{{ book.file.url }}" target="_blank" class="text-blue-600 hover:underline">
-            View PDF
+          <a href="{{ book.file.url }}"
+             target="_blank"
+             class="text-blue-600 dark:text-blue-400 hover:underline">
+            Elektron o'qish
           </a>
         {% endif %}
       </div>
     </div>
+
   </div>
 </div>
 

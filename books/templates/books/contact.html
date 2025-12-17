@@ -2,25 +2,70 @@
 {% block title %}Bog'lanish{% endblock %}
 
 {% block content %}
-<h1 class="text-3xl font-bold mb-6 dark:text-gray-100">Biz bilan bog'lanish uchun</h1>
+
+<h1 class="text-3xl font-bold mb-6 dark:text-gray-100">
+  Biz bilan bog'lanish
+</h1>
 
 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 max-w-2xl">
-  <p class="mb-4 dark:text-gray-200">
-    Savol va takliflar uchun.
+
+  <p class="mb-4 text-gray-700 dark:text-gray-200">
+    Savol va takliflaringiz bo‘lsa, quyidagi manzillar orqali bog‘lanishingiz mumkin.
   </p>
 
-  <p class="mb-2 dark:text-gray-200">
-    📧 Email: 
-    <a href="mailto:orifjonkenjayev007@gmail.com" class="text-blue-600 hover:underline">
+  <!-- Email -->
+  <p class="mb-4 text-gray-700 dark:text-gray-200">
+    📧 Email:
+    <a href="mailto:orifjonkenjayev007@gmail.com"
+       class="text-blue-600 dark:text-blue-400 hover:underline">
       orifjonkenjayev007@gmail.com
     </a>
   </p>
 
-  <div class="flex gap-4 mt-6 text-2xl text-gray-700 dark:text-gray-200">
-    <a href="#" class="hover:text-blue-600"><i class="fab fa-facebook"></i></a>
-    <a href="#" class="hover:text-sky-500"><i class="fab fa-twitter"></i></a>
-    <a href="#" class="hover:text-pink-500"><i class="fab fa-instagram"></i></a>
-    <a href="#" class="hover:text-gray-600"><i class="fab fa-github"></i></a>
+  <!-- Social links -->
+  <div class="flex gap-5 mt-6 text-2xl">
+
+    <!-- Facebook -->
+    <a href="https://facebook.com/yourusername"
+       target="_blank" rel="noopener"
+       class="text-gray-700 dark:text-gray-200 hover:text-blue-600"
+       aria-label="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+
+    <!-- Twitter / X -->
+    <a href="https://twitter.com/yourusername"
+       target="_blank" rel="noopener"
+       class="text-gray-700 dark:text-gray-200 hover:text-sky-500"
+       aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/yourusername"
+       target="_blank" rel="noopener"
+       class="text-gray-700 dark:text-gray-200 hover:text-pink-500"
+       aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- Telegram -->
+    <a href="https://t.me/Orifjon_Kenjayev"
+       target="_blank" rel="noopener"
+       class="text-gray-700 dark:text-gray-200 hover:text-sky-400"
+       aria-label="Telegram">
+      <i class="fab fa-telegram"></i>
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/yourusername"
+       target="_blank" rel="noopener"
+       class="text-gray-700 dark:text-gray-200 hover:text-gray-500"
+       aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+
   </div>
 </div>
+
 {% endblock %}

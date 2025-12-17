@@ -2,32 +2,40 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
-<h1 class="text-2xl font-bold mb-6">
-  Search results for “{{ query }}”
+
+<h1 class="text-2xl font-bold mb-6 dark:text-gray-100">
+   Ushbu qidiruvning natijalari: “{{ query }}”
 </h1>
 
 {% if results %}
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
     {% for book in results %}
       <a href="{% url 'books:book_detail' book.id %}"
-         class="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
+         class="bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-xl transition overflow-hidden">
 
         {% if book.cover %}
           <img src="{{ book.cover.url }}" class="w-full h-48 object-cover">
         {% else %}
-          <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-            <i class="fa fa-book text-4xl text-gray-400"></i>
+          <div class="w-full h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+            <i class="fa fa-book text-4xl text-gray-400 dark:text-gray-300"></i>
           </div>
         {% endif %}
 
         <div class="p-4">
-          <h3 class="font-bold line-clamp-2">{{ book.title }}</h3>
-          <p class="text-sm text-gray-600">{{ book.author }}</p>
+          <h3 class="font-bold line-clamp-2 dark:text-gray-100">
+            {{ book.title }}
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">
+            {{ book.author }}
+          </p>
         </div>
       </a>
     {% endfor %}
   </div>
 {% else %}
-  <p class="text-gray-600">No books found matching your query.</p>
+  <p class="text-gray-600 dark:text-gray-300">
+    Afsuski so'rovingiz bo'yicha hech nima topilmadi.
+  </p>
 {% endif %}
+
 {% endblock %}
