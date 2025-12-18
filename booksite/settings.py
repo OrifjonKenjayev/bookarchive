@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5zfo05)&4q-yf@8(ao3ofq7^w54ek+l5tfm*jdh&rpv2g9c6h('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['10.64.169.222', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['10.64.169.222', 'localhost', '127.0.0.1', "13.49.52.78", "geografiyaglobus.uz", "www.geografiyaglobus.uz"]
 
 
 # Application definition
@@ -96,9 +96,16 @@ DATABASES = {
     }
 }
 # Static files
+# The URL to use when referring to static files
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = '/home/ubuntu/bookarchive/staticfiles'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Media (uploaded books)
 MEDIA_URL = '/media/'
